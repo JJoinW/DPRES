@@ -103,7 +103,6 @@ def hidden_sim_loss(trait_hidden):
             z_k = expert_vectors[:, k, :]  # 形状为 (batch_size, dimension)
             negative_sim_sum += torch.exp(trait_similarity(z_i, z_k, temperature)).sum()
 
-        # 计算损失函数
         loss = -torch.log(positive_sim_sum / (positive_sim_sum + negative_sim_sum))
         return loss
 
